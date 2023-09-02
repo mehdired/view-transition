@@ -1,0 +1,37 @@
+img {
+	view-transition-name: image;
+}
+
+@keyframes grow-x {
+	from {
+		transform: scaleX(0);
+	}
+	to {
+		transform: scaleX(1);
+	}
+}
+
+@keyframes shrink-x {
+	from {
+		transform: scaleX(1);
+	}
+	to {
+		transform: scaleX(0);
+	}
+}
+
+::view-transition-old(image),
+::view-transition-new(image) {
+	height: auto;
+	right: 0;
+	left: auto;
+	transform-origin: right center;
+}
+
+::view-transition-old(image) {
+	animation: 0.25s linear both shrink-x;
+}
+
+::view-transition-new(image) {
+	animation: 0.25s 0.25s linear both grow-x;
+}
